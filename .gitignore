@@ -1,0 +1,6 @@
+.DS_Store
+
+database/db.sqlite
+
+src/main.ts
+.env
