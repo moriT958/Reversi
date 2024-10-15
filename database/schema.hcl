@@ -1,45 +1,48 @@
+schema "public" {
+  comment = "standard public schema"
+}
+
 table "games" {
-  schema = schema.main
+  schema = schema.public
   column "id" {
-    null           = true
-    type           = integer
-    auto_increment = true
+    null           = false
+    type           = int
   }
   column "started_at" {
     null = false
-    type = datetime
+    type = timestamp
   }
   primary_key {
     columns = [column.id]
   }
 }
+
 table "turns" {
-  schema = schema.main
+  schema = schema.public
   column "id" {
-    null           = true
-    type           = integer
-    auto_increment = true
+    null           = false
+    type           = int
   }
   column "game_id" {
     null = false
-    type = integer
+    type = inte
   }
   column "turn_count" {
     null = false
-    type = integer
+    type = int
   }
   column "next_disc" {
     null = true
-    type = integer
+    type = int
   }
   column "end_at" {
     null = false
-    type = datetime
+    type = timestamp
   }
   primary_key {
     columns = [column.id]
   }
-  foreign_key "0" {
+  foreign_key "game_id_fk" {
     columns     = [column.game_id]
     ref_columns = [table.games.column.id]
     on_update   = NO_ACTION
@@ -148,6 +151,4 @@ table "game_results" {
     on_update   = NO_ACTION
     on_delete   = NO_ACTION
   }
-}
-schema "main" {
 }

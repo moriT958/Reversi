@@ -10,6 +10,10 @@ async function showBoard(turnCount) {
   const board = responseBody.board
   const nextDisc = responseBody.nextDisc
 
+  const hello = await fetch('/')
+  const helloBody = await hello.json()
+  const hw = helloBody.message
+
   while (boardElement.firstChild) {
     boardElement.removeChild(boardElement.firstChild)
   }
